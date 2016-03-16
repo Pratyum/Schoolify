@@ -1,6 +1,5 @@
 package com.example.pratyumjagannath.schoolify;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -10,7 +9,8 @@ public class SecondarySchool extends School {
     private boolean isAutonomous;
     private boolean isIndependent;
     private boolean isIntegrated;
-    private ArrayList<String> distinctionProg;
+    private boolean special_assistance_plan_school;
+    private String[] distinctionProg;
 
 
     public SecondarySchool(String name, String address) throws ExecutionException, InterruptedException {
@@ -29,7 +29,11 @@ public class SecondarySchool extends School {
         return isIntegrated;
     }
 
-    public ArrayList<String> getDistinctionProg() {
+    public boolean isSpecial_assistance_plan_school() {
+        return special_assistance_plan_school;
+    }
+
+    public String[] getDistinctionProg() {
         return distinctionProg;
     }
 
@@ -45,7 +49,11 @@ public class SecondarySchool extends School {
         this.isIntegrated = isIntegrated;
     }
 
-    public void setDistinctionProg(ArrayList<String> distinctionProg) {
+    public void setSpecial_assistance_plan_school(boolean special_assistance_plan_school) {
+        this.special_assistance_plan_school = special_assistance_plan_school;
+    }
+
+    public void setDistinctionProg(String[] distinctionProg) {
         this.distinctionProg = distinctionProg;
     }
 

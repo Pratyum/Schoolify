@@ -20,11 +20,13 @@ public class School {
     }
 
     public LatLng getSchool_location() throws ExecutionException, InterruptedException {
-        FetchLocationData locationData = new FetchLocationData();
-        locationData.execute(school_address);
-        double[] latlng = locationData.get();
-        this.school_location = new LatLng(latlng[0], latlng[1]);
-        Log.d("BOOBS", latlng[0] + "," + latlng[1] + " for " + school_name);
+        if (school_location!=null) {
+            FetchLocationData locationData = new FetchLocationData();
+            locationData.execute(school_address);
+            double[] latlng = locationData.get();
+            this.school_location = new LatLng(latlng[0], latlng[1]);
+            Log.d("BOOBS", latlng[0] + "," + latlng[1] + " for " + school_name);
+        }
         return this.school_location;
     }
 

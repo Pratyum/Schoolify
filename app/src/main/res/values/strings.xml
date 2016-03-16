@@ -4,7 +4,6 @@
     <string name="title_activity_choose_levelof_school">ChooseLevelofSchool</string>
 
 
-    <string name="app_name">Navigation Drawer Example</string>
     <string-array name="planets_array">
         <item>Mercury</item>
         <item>Venus</item>

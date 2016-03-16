@@ -33,7 +33,7 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
             final String KEY_PARAM = "resource_id";
             final String KEY_VALUE = "de6fbf16-9e05-495d-9371-8b706bba5be2";
             final String LIMIT_PARAM = "limit";
-            final String LIMIT_VALUE = "20";
+            final String LIMIT_VALUE = "40";
 
             Uri builtUri = Uri.parse(BASE_ADDR).buildUpon()
                     .appendQueryParameter(KEY_PARAM, KEY_VALUE)
@@ -86,7 +86,7 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
         }
         try {
             Log.d(LOG_TAG,"Ready to parse!");
-            return getLocationDataFromJson(JsonStr);
+            return getSchoolDataFromJson(JsonStr);
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
         return null;
     }
 
-    private ArrayList<School> getLocationDataFromJson(String JsonStr)
+    private ArrayList<School> getSchoolDataFromJson(String JsonStr)
             throws JSONException {
         Log.d(LOG_TAG, JsonStr);
         // These are the names of the JSON objects that need to be extracted.
@@ -122,16 +122,28 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
             if(object.getString("autonomous_school").contains("No")){
                 school.setIsAutonomous(false);
             }
+            else {
+                school.setIsAutonomous(true);
+            }
             if(object.getString("independent_school").contains("No")){
-                school.setIsAutonomous(false);
+                school.setIsIndependent(false);
+            }
+            else{
+                school.setIsIndependent(true);
             }
             if(object.getString("special_assistance_plan_school").contains("No")){
-                school.setIsAutonomous(false);
+                school.setSpecial_assistance_plan_school(false);
+            }
+            else{
+                school.setSpecial_assistance_plan_school(true);
             }
             if(object.getString("integrated_programme").contains("No")){
-                school.setIsAutonomous(false);
+                school.setIsIntegrated(false);
             }
             if(object.getString("school_with_distinctive_programmes")!="na") {
+                String all_programs = object.getString("school_with_distinctive_programmes");
+                String[] program = all_programs.split(";");
+                school.setDistinctionProg(program);
             }
             ListOfSchool.add(school);
             Log.d(LOG_TAG,"School "+i+" added");
