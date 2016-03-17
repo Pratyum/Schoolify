@@ -28,6 +28,12 @@ public class School {
         return this.school_location;
     }
 
+    public void setSchool_location() throws ExecutionException, InterruptedException {
+        FetchLocationData locationData = new FetchLocationData();
+        locationData.execute(school_address);
+        double[] latlng = locationData.get();
+        this.school_location = new LatLng(latlng[0], latlng[1]);
+    }
 
     public String getSchool_address() {
         return school_address;

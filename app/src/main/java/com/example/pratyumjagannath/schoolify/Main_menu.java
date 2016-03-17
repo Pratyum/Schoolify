@@ -46,8 +46,6 @@ public class Main_menu extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
-
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -115,7 +113,7 @@ public class Main_menu extends AppCompatActivity
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setZoomControlsEnabled(true);
             LatLng ntu = new LatLng(1.3447, 103.6813);
-            CameraPosition target = CameraPosition.builder().target(ntu).zoom(14).build();
+            CameraPosition target = CameraPosition.builder().target(ntu).zoom(10).build();
             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
 
             FetchSchoolData schools = new FetchSchoolData();
@@ -131,14 +129,14 @@ public class Main_menu extends AppCompatActivity
             }
             for (int i = 0; i < ListOfSchools.size(); ++i) {
                 Log.d("BOOBS", "Marking on Map!");
-                MarkerOptions result_marker01 = null;
+                MarkerOptions result= null;
                 try {
-                    result_marker01 = new MarkerOptions()
+                    result= new MarkerOptions()
                             .position(ListOfSchools.get(i).getSchool_location())
                             .title(ListOfSchools.get(i).getSchool_name())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_room_black_24dp));
-                    googleMap.addMarker(result_marker01);
-                    Log.d("BOOBS", "Map done!");
+                    googleMap.addMarker(result);
+                    Log.d("BOOBS", "Map done for "+ i +" "+ListOfSchools.get(i).getSchool_name());
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e) {
