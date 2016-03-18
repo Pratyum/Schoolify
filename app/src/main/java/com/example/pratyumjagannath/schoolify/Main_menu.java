@@ -127,20 +127,22 @@ public class Main_menu extends AppCompatActivity
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-            for (int i = 0; i < ListOfSchools.size(); ++i) {
-                Log.d("BOOBS", "Marking on Map!");
-                MarkerOptions result= null;
-                try {
-                    result= new MarkerOptions()
-                            .position(ListOfSchools.get(i).getSchool_location())
+            ArrayList<LatLng> listofMarkers = new ArrayList<>();
+            try {
+                for (int i = 0; i < ListOfSchools.size(); ++i) {
+                    listofMarkers.add(ListOfSchools.get(i).getSchool_location());
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Log.d("BOOBS",listofMarkers.size()+"is the size of the latlng");
+            for (int i=0;i<listofMarkers.size();++i){
+                if (listofMarkers.get(i)!=null){
+                    MarkerOptions result_marker01 = new MarkerOptions()
+                            .position(listofMarkers.get(i))
                             .title(ListOfSchools.get(i).getSchool_name())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_room_black_24dp));
-                    googleMap.addMarker(result);
-                    Log.d("BOOBS", "Map done for "+ i +" "+ListOfSchools.get(i).getSchool_name());
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    googleMap.addMarker(result_marker01);
                 }
             }
 

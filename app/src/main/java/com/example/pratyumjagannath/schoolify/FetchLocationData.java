@@ -18,14 +18,16 @@ import java.net.URL;
 /**
  * Created by pratyumjagannath on 3/15/16.
  */
-public class FetchLocationData extends AsyncTask<String, Void, double[]>{
+public class FetchLocationData extends AsyncTask<String, Void, double[]> {
     private String LOG_TAG = "BOOBS";
+    private String address;
     @Override
     protected double[] doInBackground(String... strings) {
         Log.d(LOG_TAG,"Must be concat"+strings[0]);
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String JsonStr = null;
+        address = strings[0];
 
         try {
             final String BASE_ADDR = "https://maps.googleapis.com/maps/api/geocode/json?";
@@ -93,6 +95,7 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]>{
         return null;
     }
 
+
     private double[] getLocationDataFromJson(String JsonStr)
             throws JSONException {
 //        Log.d(LOG_TAG, JsonStr);
@@ -121,4 +124,9 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]>{
         }
     }
 
+    @Override
+    protected void onPostExecute(double[] doubles) {
+        super.onPostExecute(doubles);
+
+    }
 }

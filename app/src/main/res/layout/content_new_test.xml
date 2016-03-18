@@ -20,16 +20,26 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/address"
-        android:layout_weight="5"
-        android:layout_gravity="bottom"/>
-        <Button
+        android:layout_weight="8"
+        android:layout_gravity="bottom"
+        android:singleLine="true"/>
+        <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/submit_address"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:background="@drawable/ic_magnify"
-            />
+            android:src="@drawable/ic_magnify"
+            android:background="@android:color/transparent" />
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/my_location"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_crosshairs_gps"
+            android:background="@android:color/transparent" />
+
     </LinearLayout>
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
@@ -37,5 +47,13 @@
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5" />
+        android:layout_weight="8" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Next"
+        android:drawableRight="@drawable/ic_arrow_right_bold"
+        android:background="@color/colorPrimary"
+        android:id="@+id/to_Step_2"/>
 </LinearLayout>
