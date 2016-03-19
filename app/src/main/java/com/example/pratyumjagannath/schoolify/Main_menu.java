@@ -30,6 +30,8 @@ import java.util.concurrent.ExecutionException;
 public class Main_menu extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,OnMapReadyCallback {
 
+    ArrayList<School> ListOfSchools;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,9 +120,8 @@ public class Main_menu extends AppCompatActivity
 
             FetchSchoolData schools = new FetchSchoolData();
             schools.execute();
-            ArrayList<School> ListOfSchools = new ArrayList<>();
             try {
-                ListOfSchools = schools.get();
+                setListOfSchools(schools.get());
                 Log.d("BOOBS", "List of Schools got!");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -129,8 +130,8 @@ public class Main_menu extends AppCompatActivity
             }
             ArrayList<LatLng> listofMarkers = new ArrayList<>();
             try {
-                for (int i = 0; i < ListOfSchools.size(); ++i) {
-                    listofMarkers.add(ListOfSchools.get(i).getSchool_location());
+                for (int i = 0; i < getListOfSchools().size(); ++i) {
+                    listofMarkers.add(getListOfSchools().get(i).getSchool_location());
                 }
             }catch (Exception e){
                 e.printStackTrace();
@@ -140,7 +141,7 @@ public class Main_menu extends AppCompatActivity
                 if (listofMarkers.get(i)!=null){
                     MarkerOptions result_marker01 = new MarkerOptions()
                             .position(listofMarkers.get(i))
-                            .title(ListOfSchools.get(i).getSchool_name())
+                            .title(getListOfSchools().get(i).getSchool_name())
                             .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_room_black_24dp));
                     googleMap.addMarker(result_marker01);
                 }
@@ -149,5 +150,13 @@ public class Main_menu extends AppCompatActivity
         } else {
             // Show rationale and request permission.
         }
+    }
+
+    public ArrayList<School> getListOfSchools() {
+        return ListOfSchools;
+    }
+
+    public void setListOfSchools(ArrayList<School> listOfSchools) {
+        ListOfSchools = listOfSchools;
     }
 }

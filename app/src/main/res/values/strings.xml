@@ -15,4 +15,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_choose_type_of_school">ChooseTypeOfSchool</string>
+    <string name="title_activity_choose_courses">ChooseCourses</string>
 </resources>

@@ -43,10 +43,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ChooseLevel"
-            android:label="@string/title_activity_choose_level"></activity>
+            android:label="@string/title_activity_choose_level" />
         <activity
             android:name=".ChooseTypeOfSchool"
             android:label="@string/title_activity_choose_type_of_school"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ChooseCourses"
+            android:label="@string/title_activity_choose_courses"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

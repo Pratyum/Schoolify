@@ -9,7 +9,7 @@ import java.util.concurrent.ExecutionException;
 /**
  * Created by pratyumjagannath on 3/15/16.
  */
-public class School {
+public class School{
     private String school_name;
     private LatLng school_location;
     private String school_address;
@@ -50,5 +50,6 @@ public class School {
     public void setSchool_name(String school_name) {
         this.school_name = school_name;
     }
+
 }
 
