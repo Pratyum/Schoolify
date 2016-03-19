@@ -2,6 +2,7 @@ package com.example.pratyumjagannath.schoolify;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -41,27 +42,10 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
                 .findFragmentById(R.id.map_location);
         mapFragment.getMapAsync(this);
 
-        ImageButton mylocation = (ImageButton) findViewById(R.id.my_location);
-
-        mylocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                updateLocationData();
-            }
-        });
-
-        Button next_button = (Button) findViewById(R.id.to_Step_2);
-        next_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(final GoogleMap googleMap) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
@@ -69,6 +53,35 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
             LatLng ntu = new LatLng(1.3447, 103.6813);
             CameraPosition target = CameraPosition.builder().target(ntu).zoom(14).build();
             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(target));
+            Button next_button = (Button) findViewById(R.id.to_Step_2);
+            next_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(getMyLocation()!=null) {
+                        Toast.makeText(getBaseContext(), "Location changed: Lat: " + getMyLocation().latitude + " Lng: "
+                                + getMyLocation().longitude, Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(getApplicationContext(), ChooseLevelofSchool.class);
+                        i.putExtra("Coordinates", getMyLocation());
+                        startActivity(i);
+                    }
+                    else{
+                        Toast.makeText(getBaseContext(),"No Location set", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            ImageButton mylocation = (ImageButton) findViewById(R.id.my_location);
+
+            mylocation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Location mylocation = googleMap.getMyLocation();
+                    LatLng myLocationCoordinates = new LatLng(mylocation.getLatitude(), mylocation.getLongitude());
+                    Log.d("BOOBS", "Lat:" + mylocation.getLatitude() + "Long: " + mylocation.getLongitude());
+                    setMyLocation(myLocationCoordinates);
+                    EditText address = (EditText) findViewById(R.id.address);
+                    address.setText("My Location");
+                }
+            });
         } else {
 
         }
@@ -78,7 +91,6 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
         LocationManager locationManager = (LocationManager)
                 getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,

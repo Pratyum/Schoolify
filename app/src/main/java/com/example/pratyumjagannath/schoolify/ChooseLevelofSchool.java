@@ -1,13 +1,21 @@
 package com.example.pratyumjagannath.schoolify;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class ChooseLevelofSchool extends AppCompatActivity {
+
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private Button btnDisplay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,14 +24,40 @@ public class ChooseLevelofSchool extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        addListenerOnButton();
+
+    }
+
+
+    public void addListenerOnButton() {
+
+        radioGroup = (RadioGroup) findViewById(R.id.level_of_school);
+        btnDisplay = (Button) findViewById(R.id.to_Step_3);
+
+        btnDisplay.setOnClickListener(new View.OnClickListener() {
+
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+
+                // get selected radio button from radioGroup
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                // find the radiobutton by returned id
+                radioButton = (RadioButton) findViewById(selectedId);
+
+                Toast.makeText(getBaseContext(),
+                        radioButton.getText(), Toast.LENGTH_SHORT).show();
+
+                Intent i = getIntent();
+                Intent intent = new Intent(getApplicationContext(),ChooseTypeOfSchool.class);
+                intent.putExtra("SchoolLevel",radioButton.getText());
+                intent.putExtra("Coordinates",i.getSerializableExtra("Coordinates"));
+                startActivity(intent);
+
             }
+
         });
+
     }
 
 }
