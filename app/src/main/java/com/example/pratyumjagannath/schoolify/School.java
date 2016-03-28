@@ -6,9 +6,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.concurrent.ExecutionException;
 
-/**
- * Created by pratyumjagannath on 3/15/16.
- */
 public class School{
     private String school_name;
     private LatLng school_location;
@@ -50,6 +47,44 @@ public class School{
     public void setSchool_name(String school_name) {
         this.school_name = school_name;
     }
+
+/*
+    // Using https://github.com/jasonwinn/haversine to calculate distance
+    public void calc_distance_score(Haversine haversine, LatLng location, int distance_importance) {
+        int dist_score = 0;
+        int distance = haversine.distance(location[0], location[1], school_location[0], school_location[1])
+        for (int i = 1; i<=4; i++) {
+            if (distance < i) {
+                dist_score == 4-i;
+                break;
+            }
+        }
+        score += dist_score*distance_importance;
+    }
+
+    public void calc_programmes_score(ArrayList<String> preferred_programmes, int programmes_importance) {
+        int prog_score = 0;
+        for (String program: preferred_programmes) {
+            if (distinctionProg.contains(program)) {
+                prog_score++;
+            }
+        }
+        score += prog_score*programmes_importance;
+    }
+
+    public void calc_types_score(boolean auto, boolean special, boolean integrated, boolean independent, int types_importance) {
+        int type_score = 0;
+        if (auto == isAutonomous) { type_score++; }
+        if (special == special_assistance_plan_school) { type_score++; }
+        if (integrated == isIntegrated) { type_score++; }
+        if (independent == isIndependent) { type_score++; }
+        score += type_score*types_importance;
+    }
+
+    @Override
+    public int compare(School o1, School o2) {
+        return o1.getScore().compareTo(o2.getScore());
+    }*/
 
 }
 

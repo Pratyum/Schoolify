@@ -1,0 +1,25 @@
+// Algorithm. Methods needed is added in class School, but not tested.
+// This code should be included in our MODEL in MVC pattern. Which one do you think
+// is our Model? There should be a class called Schoolify or TestController or something.
+// Let's discuss this tomorrow.
+
+
+private Havesine haversine = new Haversine()
+private LatLng location
+private ArrayList<String> preferred_programmes
+private boolean isAutonomous;
+private boolean isIndependent;
+private boolean isIntegrated;
+private boolean special_assistance_plan_school;
+private int distance_importance = 0.xx
+private int programmes_importance = 0.yy
+private int types_importance = 0.zz
+
+
+
+for (School school: schoolList) {
+    school.calc_distance_score(haversine, location, distance_importance);
+    school.calc_programmes_score(preferred_programmes, programmes_importance);
+    school.calc_types_score(peferred_types, types_importance);
+}
+schoolList.sort()
