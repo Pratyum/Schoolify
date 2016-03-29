@@ -1,4 +1,4 @@
-package com.example.pratyumjagannath.schoolify;
+package com.example.pratyumjagannath.schoolify.controller;
 
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -23,7 +23,7 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]> {
     private String address;
     @Override
     protected double[] doInBackground(String... strings) {
-        Log.d(LOG_TAG,"Must be concat"+strings[0]);
+//        Log.d(LOG_TAG,"Must be concat"+strings[0]);
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String JsonStr = null;
@@ -38,7 +38,7 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]> {
                     .appendQueryParameter(ADDRESS_PARAM, strings[0])
                     .appendQueryParameter(KEY_PARAM, KEY_VALUE)
                     .build();
-            Log.d(LOG_TAG,builtUri.toString());
+//            Log.d(LOG_TAG,builtUri.toString());
             URL url = new URL(builtUri.toString());
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -84,7 +84,7 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]> {
             }
         }
         try {
-            Log.d(LOG_TAG,"Ready to parse!");
+//            Log.d(LOG_TAG,"Ready to parse!");
             return getLocationDataFromJson(JsonStr);
         } catch (JSONException e) {
             Log.e(LOG_TAG, e.getMessage(), e);
@@ -115,7 +115,7 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]> {
             JSONObject locationObject = geometry.getJSONObject(OWM_LOCATION);
             result[0] = locationObject.getDouble("lat");
             result[1] = locationObject.getDouble("lng");
-            Log.d(LOG_TAG,"Location data is "+ result[0]+","+ result[1]);
+//            Log.d(LOG_TAG,"Location data is "+ result[0]+","+ result[1]);
             return result;
         }
         else{

@@ -1,4 +1,4 @@
-package com.example.pratyumjagannath.schoolify;
+package com.example.pratyumjagannath.schoolify.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.example.pratyumjagannath.schoolify.R;
 
 public class ChooseLevelofSchool extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.pratyumjagannath.schoolify;
+package com.example.pratyumjagannath.schoolify.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+
+import com.example.pratyumjagannath.schoolify.controller.FetchSchoolData;
+import com.example.pratyumjagannath.schoolify.R;
+import com.example.pratyumjagannath.schoolify.model.School;
+import com.example.pratyumjagannath.schoolify.model.SecondarySchool;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -22,11 +27,11 @@ public class ChooseCourses extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Intent intent = getIntent();
-        String Level = intent.getStringExtra("SchoolLevel");
-        boolean isSpecialPlan = intent.getBooleanExtra("isSpecialPlan", false);
-        boolean isAutonomous = intent.getBooleanExtra("isAutonomous", false);
-        boolean isInegrated = intent.getBooleanExtra("isInegrated", false);
-        boolean isIndependent = intent.getBooleanExtra("isIndependent",false);
+        final String Level = intent.getStringExtra("SchoolLevel");
+        final boolean isSpecialPlan = intent.getBooleanExtra("isSpecialPlan", false);
+        final boolean isAutonomous = intent.getBooleanExtra("isAutonomous", false);
+        final boolean isInegrated = intent.getBooleanExtra("isInegrated", false);
+        final boolean isIndependent = intent.getBooleanExtra("isIndependent",false);
         Log.d("BOOBS", Level);
         Log.d("BOOBS",isAutonomous+" ");
         Log.d("BOOBS",isSpecialPlan+"");
@@ -88,6 +93,14 @@ public class ChooseCourses extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("BOOBS",ChoiceOfCourses.size()+" courses are selected!");
+                Intent i  = new Intent(getApplicationContext(),Results.class);
+                i.putExtra("SchoolLevel",Level);
+                i.putExtra("isSpecialPlan",isSpecialPlan);
+                i.putExtra("isAutonomous",isAutonomous);
+                i.putExtra("isIndependent",isIndependent);
+                i.putExtra("isInegrated",isInegrated);
+                i.putExtra("ListOfCourses",ChoiceOfCourses);
+                startActivity(i);
             }
         });
 

@@ -1,9 +1,11 @@
-package com.example.pratyumjagannath.schoolify;
+package com.example.pratyumjagannath.schoolify.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.pratyumjagannath.schoolify.R;
 
 public class ChooseLevel extends AppCompatActivity {
 

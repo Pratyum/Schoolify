@@ -1,4 +1,4 @@
-package com.example.pratyumjagannath.schoolify;
+package com.example.pratyumjagannath.schoolify.view;
 
 import android.Manifest;
 import android.content.Intent;
@@ -15,12 +15,16 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.pratyumjagannath.schoolify.R;
+import com.example.pratyumjagannath.schoolify.model.School;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
 
 public class NewTestActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -32,8 +36,9 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
         setContentView(R.layout.activity_new_test);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        Intent i = getIntent();
+        ArrayList<School> ListofSchools = (ArrayList<School>) i.getSerializableExtra("ListofSchools");
+        Log.d("BOOBs",ListofSchools.size()+" Is the size");
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map_location);
         mapFragment.getMapAsync(this);

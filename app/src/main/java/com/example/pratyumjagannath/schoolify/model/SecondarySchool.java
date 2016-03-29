@@ -1,4 +1,4 @@
-package com.example.pratyumjagannath.schoolify;
+package com.example.pratyumjagannath.schoolify.model;
 
 import java.util.concurrent.ExecutionException;
 

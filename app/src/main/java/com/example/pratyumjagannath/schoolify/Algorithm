@@ -4,7 +4,6 @@
 // Let's discuss this tomorrow.
 
 
-private Havesine haversine = new Haversine()
 private LatLng location
 private ArrayList<String> preferred_programmes
 private boolean isAutonomous;
@@ -18,7 +17,7 @@ private int types_importance = 0.zz
 
 
 for (School school: schoolList) {
-    school.calc_distance_score(haversine, location, distance_importance);
+    school.calc_distance_score(location, distance_importance);
     school.calc_programmes_score(preferred_programmes, programmes_importance);
     school.calc_types_score(peferred_types, types_importance);
 }

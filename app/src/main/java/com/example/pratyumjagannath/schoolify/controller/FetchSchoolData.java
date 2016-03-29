@@ -1,8 +1,11 @@
-package com.example.pratyumjagannath.schoolify;
+package com.example.pratyumjagannath.schoolify.controller;
 
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.pratyumjagannath.schoolify.model.School;
+import com.example.pratyumjagannath.schoolify.model.SecondarySchool;
 
 import org.json.JSONArray;
 import org.json.JSONException;
