@@ -30,8 +30,8 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]> {
         address = strings[0];
 
         try {
-            final String BASE_ADDR = "https://maps.googleapis.com/maps/api/geocode/json?";
-            final String ADDRESS_PARAM = "address";
+            final String BASE_ADDR = "https://maps.googleapis.com/maps/api/place/textsearch/json?";
+            final String ADDRESS_PARAM = "query";
             final String KEY_PARAM = "key";
             final String KEY_VALUE = "AIzaSyAMA9MeMeII0EGx_1m3tJ_flYB8xRz5FEg";
             Uri builtUri = Uri.parse(BASE_ADDR).buildUpon()
@@ -115,7 +115,7 @@ public class FetchLocationData extends AsyncTask<String, Void, double[]> {
             JSONObject locationObject = geometry.getJSONObject(OWM_LOCATION);
             result[0] = locationObject.getDouble("lat");
             result[1] = locationObject.getDouble("lng");
-//            Log.d(LOG_TAG,"Location data is "+ result[0]+","+ result[1]);
+            Log.d(LOG_TAG,"Location data is "+ result[0]+","+ result[1]);
             return result;
         }
         else{

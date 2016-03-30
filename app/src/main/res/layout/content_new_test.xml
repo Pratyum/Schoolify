@@ -16,13 +16,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-    <EditText
+    <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/address"
         android:layout_weight="8"
         android:layout_gravity="bottom"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:paddingBottom="8dp"/>
         <ImageButton
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -31,14 +32,14 @@
             android:layout_gravity="center"
             android:src="@drawable/ic_magnify"
             android:background="@android:color/transparent" />
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/my_location"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_crosshairs_gps"
-            android:background="@android:color/transparent" />
+        <!--<ImageButton-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/my_location"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@drawable/ic_crosshairs_gps"-->
+            <!--android:background="@android:color/transparent" />-->
 
     </LinearLayout>
 

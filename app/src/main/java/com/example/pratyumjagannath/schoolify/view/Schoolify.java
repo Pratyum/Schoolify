@@ -96,7 +96,6 @@ public class Schoolify extends AppCompatActivity
 
         if (id == R.id.new_test) {
             Intent i = new Intent(getApplication(),NewTestActivity.class);
-            i.putExtra("ListofSchools",ListOfSchools);
             startActivity(i);
         } else if (id == R.id.saved_test) {
 
@@ -144,7 +143,7 @@ public class Schoolify extends AppCompatActivity
             Log.d("BOOBS",listofMarkers.size()+"is the size of the latlng");
             if (googleMap !=null) {
                 for (int i = 0; i < listofMarkers.size(); ++i) {
-                    if (listofMarkers.get(i) != null) {
+                    if (listofMarkers.get(i)!=null) {
                         MarkerOptions result_marker01 = new MarkerOptions()
                                 .position(listofMarkers.get(i))
                                 .title(getListOfSchools().get(i).getSchool_name())

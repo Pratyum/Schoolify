@@ -25,9 +25,15 @@ public class School implements Serializable{
         FetchLocationData locationData = new FetchLocationData();
         locationData.execute(school_address);
         double[] latlng = locationData.get();
-        this.school_location = new LatLng(latlng[0], latlng[1]);
-        Log.d("BOOBS", latlng[0] + "," + latlng[1] + " for " + school_name);
-        return this.school_location;
+        if(latlng!=null) {
+            this.school_location = new LatLng(latlng[0], latlng[1]);
+            Log.d("BOOBS", latlng[0] + "," + latlng[1] + " for " + school_name);
+            return this.school_location;
+        }
+        else{
+            Log.d("BOOBs","Nothing Returned: " + school_name);
+            return null;
+        }
     }
 
     public void setSchool_location() throws ExecutionException, InterruptedException {
