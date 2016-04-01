@@ -12,37 +12,13 @@
     tools:context=".view.NewTestActivity"
     tools:showIn="@layout/activity_new_test"
     android:orientation="vertical">
-    <LinearLayout
+
+    <fragment
+        android:id="@+id/place_autocomplete_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/address"
-        android:layout_weight="8"
-        android:layout_gravity="bottom"
-        android:singleLine="true"
-        android:paddingBottom="8dp"/>
-        <ImageButton
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/submit_address"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_magnify"
-            android:background="@android:color/transparent" />
-        <!--<ImageButton-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/my_location"-->
-            <!--android:layout_weight="1"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:src="@drawable/ic_crosshairs_gps"-->
-            <!--android:background="@android:color/transparent" />-->
-
-    </LinearLayout>
-
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+        />
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/map_location"
         android:name="com.google.android.gms.maps.MapFragment"

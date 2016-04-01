@@ -11,6 +11,10 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.pratyumjagannath.schoolify.R;
+import com.example.pratyumjagannath.schoolify.model.School;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class ChooseTypeOfSchool extends AppCompatActivity {
 
@@ -42,11 +46,14 @@ public class ChooseTypeOfSchool extends AppCompatActivity {
                 Log.d("BOOBS","Button Pressed!");
                 StringBuffer result = new StringBuffer();
                 Intent i = getIntent();
+                ArrayList<School> ListOfSchools = (ArrayList<School>) i.getSerializableExtra("ListOfSchools");
+                Log.d("BOOBS",ListOfSchools.size()+" is the size in Choose Type");
                 Intent intent = new Intent(getApplicationContext(),ChooseCourses.class);
                 intent.putExtra("Coordinates",i.getSerializableExtra("Coordinates"));
                 intent.putExtra("SchoolLevel", i.getSerializableExtra("SchoolLevel"));
-                intent.putExtra("myLatitude",i.getDoubleExtra("myLatitude",0.0));
+                intent.putExtra("myLatitude",i.getDoubleExtra("myLatitude", 0.0));
                 intent.putExtra("myLongitude",i.getDoubleExtra("myLongitude",0.0));
+                intent.putExtra("ListOfSchools",(Serializable)ListOfSchools);
 
                 if(chkSpecialPlan!=null) {
                     result.append("Special Plan check : ").append(chkSpecialPlan.isChecked() + "\n");

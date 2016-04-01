@@ -15,18 +15,18 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.pratyumjagannath.schoolify.controller.FetchSchoolData;
 import com.example.pratyumjagannath.schoolify.R;
+import com.example.pratyumjagannath.schoolify.controller.FetchSchoolData;
 import com.example.pratyumjagannath.schoolify.model.School;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -96,6 +96,7 @@ public class Schoolify extends AppCompatActivity
 
         if (id == R.id.new_test) {
             Intent i = new Intent(getApplication(),NewTestActivity.class);
+            i.putExtra("ListOfSchools",(Serializable) ListOfSchools);
             startActivity(i);
         } else if (id == R.id.saved_test) {
 
@@ -146,8 +147,7 @@ public class Schoolify extends AppCompatActivity
                     if (listofMarkers.get(i)!=null) {
                         MarkerOptions result_marker01 = new MarkerOptions()
                                 .position(listofMarkers.get(i))
-                                .title(getListOfSchools().get(i).getSchool_name())
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_room_black_24dp));
+                                .title(getListOfSchools().get(i).getSchool_name());
                         googleMap.addMarker(result_marker01);
                         Log.d("BOOBS", i + "." + listofMarkers.get(i).latitude + "," + listofMarkers.get(i).longitude + "Added!");
                     }

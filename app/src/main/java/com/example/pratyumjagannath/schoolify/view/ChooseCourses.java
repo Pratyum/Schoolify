@@ -10,13 +10,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
-import com.example.pratyumjagannath.schoolify.controller.FetchSchoolData;
 import com.example.pratyumjagannath.schoolify.R;
 import com.example.pratyumjagannath.schoolify.model.School;
 import com.example.pratyumjagannath.schoolify.model.SecondarySchool;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 public class ChooseCourses extends AppCompatActivity {
 
@@ -32,6 +30,8 @@ public class ChooseCourses extends AppCompatActivity {
         final boolean isAutonomous = intent.getBooleanExtra("isAutonomous", false);
         final boolean isInegrated = intent.getBooleanExtra("isInegrated", false);
         final boolean isIndependent = intent.getBooleanExtra("isIndependent",false);
+        ArrayList<School> ListOfSchools = (ArrayList<School>) intent.getSerializableExtra("ListOfSchools");
+        Log.d("BOOBS",ListOfSchools.size()+" schools recieved");
         Log.d("BOOBS", Level);
         Log.d("BOOBS",isAutonomous+" ");
         Log.d("BOOBS",isSpecialPlan+"");
@@ -40,17 +40,17 @@ public class ChooseCourses extends AppCompatActivity {
         Log.d("BOOBS",intent.getDoubleExtra("myLatitude",0.0)+"");
         Log.d("BOOBS", intent.getDoubleExtra("myLongitude", 0.0) + "");
 
-        FetchSchoolData fetchData = new FetchSchoolData();
-        fetchData.execute();
-        ArrayList<School> ListOfSchools = new ArrayList<>();
-        try {
-            ListOfSchools = fetchData.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        Log.d("BOOBS","Size of Array is "+ ListOfSchools.size());
+//        FetchSchoolData fetchData = new FetchSchoolData();
+//        fetchData.execute();
+//        ArrayList<School> ListOfSchools = new ArrayList<>();
+//        try {
+//            ListOfSchools = fetchData.get();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        } catch (ExecutionException e) {
+//            e.printStackTrace();
+//        }
+//        Log.d("BOOBS","Size of Array is "+ ListOfSchools.size());
         ArrayList<String> ListOfCourses = new ArrayList<>();
 
         for (int i=0;i<ListOfSchools.size();++i){
