@@ -25,12 +25,4 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="8" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Next"
-        android:drawableRight="@drawable/ic_arrow_right_bold"
-        android:background="@color/colorPrimary"
-        android:id="@+id/to_Step_2"/>
 </LinearLayout>

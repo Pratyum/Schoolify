@@ -1,5 +1,8 @@
 package com.example.pratyumjagannath.schoolify.model;
 
+import android.util.Log;
+
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -55,6 +58,15 @@ public class SecondarySchool extends School {
 
     public void setDistinctionProg(String[] distinctionProg) {
         this.distinctionProg = distinctionProg;
+    }
+
+    public void calc_program_score(ArrayList<String> listOfCourses){
+        for(int i=0;i<distinctionProg.length;++i){
+            if(listOfCourses.contains(distinctionProg[i])){
+                Log.d("BOOBS","Match found in "+ getSchool_name()+" with "+ distinctionProg[i]);
+                setScore(getScore() * 0.8);
+            }
+        }
     }
 
 }

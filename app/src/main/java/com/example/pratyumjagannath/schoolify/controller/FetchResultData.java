@@ -16,10 +16,12 @@ public class FetchResultData {
     ArrayList<School> ListOfSchools;
     LatLng MyPosition;
     ArrayList<Float> Score;
-     public FetchResultData(ArrayList<School> listOfSchools , LatLng myPosition){
+    ArrayList<String> ListOfCourses;
+     public FetchResultData(ArrayList<School> listOfSchools , LatLng myPosition ,ArrayList<String> listOfCourses){
            ListOfSchools= listOfSchools;
          MyPosition = myPosition;
          Score = new ArrayList<>();
+         ListOfCourses = listOfCourses;
      }
     public void calculateDistScore(){
         for(int i=0;i<ListOfSchools.size();++i){
@@ -48,6 +50,11 @@ public class FetchResultData {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void calc_program_score(){
+        for(int i=0;i< ListOfSchools.size();++i){
         }
     }
 

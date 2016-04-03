@@ -26,7 +26,6 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -96,7 +95,7 @@ public class Schoolify extends AppCompatActivity
 
         if (id == R.id.new_test) {
             Intent i = new Intent(getApplication(),NewTestActivity.class);
-            i.putExtra("ListOfSchools",(Serializable) ListOfSchools);
+            i.putExtra("ListOfSchools",ListOfSchools.toArray());
             startActivity(i);
         } else if (id == R.id.saved_test) {
 
