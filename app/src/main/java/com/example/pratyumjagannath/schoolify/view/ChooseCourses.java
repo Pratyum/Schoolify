@@ -95,7 +95,7 @@ public class ChooseCourses extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("BOOBS", ChoiceOfCourses.size() + " courses are selected!");
-                Intent i  = new Intent(getApplicationContext(),Results.class);
+                Intent i  = new Intent(getApplicationContext(),Results_navigation.class);
                 i.putExtra("SchoolLevel",Level);
                 i.putExtra("isSpecialPlan", isSpecialPlan);
                 i.putExtra("isAutonomous",isAutonomous);
