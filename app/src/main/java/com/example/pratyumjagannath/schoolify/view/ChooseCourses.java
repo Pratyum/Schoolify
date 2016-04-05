@@ -2,11 +2,11 @@ package com.example.pratyumjagannath.schoolify.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
@@ -90,7 +90,7 @@ public class ChooseCourses extends AppCompatActivity {
             layout.addView(checkBox);
         }
 
-        Button next_button = (Button) findViewById(R.id.to_Step_5);
+        FloatingActionButton next_button = (FloatingActionButton) findViewById(R.id.to_step_5);
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

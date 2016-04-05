@@ -135,7 +135,7 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
                     }
                 }
             });
-            FloatingActionButton back = (FloatingActionButton) findViewById(R.id.to_start);
+            FloatingActionButton back = (FloatingActionButton) findViewById(R.id.back_to_start);
             back.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

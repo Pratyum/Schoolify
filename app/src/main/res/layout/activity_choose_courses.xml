@@ -24,4 +24,22 @@
     <include layout="@layout/content_choose_courses" />
 
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/to_step_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_arrow_right_white" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/back_to_step_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_arrow_left_white"
+        app:layout_anchorGravity="top" />
+
+
 </android.support.design.widget.CoordinatorLayout>

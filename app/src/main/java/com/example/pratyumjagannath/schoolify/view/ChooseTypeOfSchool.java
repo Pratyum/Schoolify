@@ -2,11 +2,11 @@ package com.example.pratyumjagannath.schoolify.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
@@ -15,7 +15,6 @@ import com.example.pratyumjagannath.schoolify.R;
 public class ChooseTypeOfSchool extends AppCompatActivity {
 
     private CheckBox chkAutonomous, chkIndependent, chkIntegrated,chkSpecialPlan;
-    private Button btnDisplay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +31,9 @@ public class ChooseTypeOfSchool extends AppCompatActivity {
         chkIndependent = (CheckBox) findViewById(R.id.independent_school);
         chkIntegrated = (CheckBox) findViewById(R.id.integrated_school);
         chkSpecialPlan = (CheckBox) findViewById(R.id.special_assistance_plan_school);
-        btnDisplay = (Button) findViewById(R.id.to_Step_4);
+        FloatingActionButton next_button = (FloatingActionButton) findViewById(R.id.to_step_4);
 
-        btnDisplay.setOnClickListener(new View.OnClickListener() {
+        next_button.setOnClickListener(new View.OnClickListener() {
 
             //Run when button is clicked
             @Override

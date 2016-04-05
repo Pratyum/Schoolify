@@ -29,15 +29,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_arrow_right_bold" />
+        android:src="@drawable/ic_arrow_right_white" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/to_start"
+        android:id="@+id/back_to_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_arrow_left_bold"
+        android:src="@drawable/ic_arrow_left_white"
         app:layout_anchorGravity="top" />
 
 
