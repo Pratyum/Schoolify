@@ -6,10 +6,10 @@ import java.util.ArrayList;
 /**
  * Created by pratyumjagannath on 4/3/16.
  */
-public class DataWrapper implements Serializable{
+public class schoolTest implements Serializable{
     private ArrayList<School> ListOfSchools;
 
-    public DataWrapper(ArrayList<School> data) {
+    public schoolTest(ArrayList<School> data) {
         this.ListOfSchools = data;
     }
 

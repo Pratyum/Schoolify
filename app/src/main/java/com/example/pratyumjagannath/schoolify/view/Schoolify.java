@@ -25,6 +25,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -94,12 +95,17 @@ public class Schoolify extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.new_test) {
+            Gson gson = new Gson();
             Intent i = new Intent(getApplication(),NewTestActivity.class);
-            i.putExtra("ListOfSchools",ListOfSchools.toArray());
+            String list_schools_test = gson.toJson(ListOfSchools);
+            i.putExtra("ListOfSchools",list_schools_test);
             startActivity(i);
         } else if (id == R.id.saved_test) {
-
+            Intent i = new Intent(getApplicationContext(),SavedTest.class);
+            startActivity(i);
         } else if (id == R.id.about_us) {
+            Intent i = new Intent(getApplicationContext(),AboutUs.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_share) {
 

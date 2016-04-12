@@ -21,9 +21,9 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
- * Created by pratyumjagannath on 3/15/16.
+ * Created by pratyumjagannath on 4/11/16.
  */
-public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
+public class FetchPrimarySchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
     private String LOG_TAG = "BOOBS";
     @Override
     protected ArrayList<School> doInBackground(Void... params) {
@@ -34,9 +34,9 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
         try {
             final String BASE_ADDR = "https://data.gov.sg/api/action/datastore_search?";
             final String KEY_PARAM = "resource_id";
-            final String KEY_VALUE = "de6fbf16-9e05-495d-9371-8b706bba5be2";
+            final String KEY_VALUE = "a618503b-7f7f-4e01-bade-1a108ca604f5";
             final String LIMIT_PARAM = "limit";
-            final String LIMIT_VALUE = "20";
+            final String LIMIT_VALUE = "10";
 
             Uri builtUri = Uri.parse(BASE_ADDR).buildUpon()
                     .appendQueryParameter(KEY_PARAM, KEY_VALUE)
@@ -107,7 +107,7 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
         final String OWM_RECORDS = "records";
         JSONObject resultJson = new JSONObject(JsonStr);
         JSONObject location = resultJson.getJSONObject(OWM_RESULTS);
-        JSONArray  locationArray = location.getJSONArray(OWM_RECORDS);
+        JSONArray locationArray = location.getJSONArray(OWM_RECORDS);
         ArrayList<School> ListOfSchool = new ArrayList<>();
         Log.d(LOG_TAG,"Size of LocationArray is "+ locationArray.length());
         for(int i=0;i<locationArray.length();++i){
@@ -153,5 +153,4 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
         }
         return ListOfSchool;
     }
-
 }

@@ -31,7 +31,10 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class NewTestActivity extends AppCompatActivity implements OnMapReadyCallback,NavigationView.OnNavigationItemSelectedListener{
@@ -55,9 +58,14 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
 //        navigationView.setNavigationItemSelectedListener(this);
 
 //
-//        Intent i = getIntent();
-//        ListofSchools = (ArrayList<School>) i.getParcelableExtra("ListOfSchools");
-//        Log.d("BOOBS", ListofSchools.size()+" ");
+        Gson gson  = new Gson();
+        Type School_list = new TypeToken<ArrayList<School>>() {
+        }.getType();
+        Intent i = getIntent();
+        String json = i.getStringExtra("ListOfSchools");
+        ListofSchools = gson.fromJson(json, School_list);
+        Log.d("BOOBS", json);
+        Log.d("BOOBS", ListofSchools.size()+" ");
 
 
         MapFragment mapFragment = (MapFragment) getFragmentManager()
@@ -128,6 +136,9 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
                         Intent i = new Intent(getApplicationContext(), ChooseLevelofSchool.class);
                         i.putExtra("myLatitude", getMyLocation().latitude);
                         i.putExtra("myLongitude", getMyLocation().longitude);
+                        Gson gson = new Gson();
+                        String list_schools_test = gson.toJson(ListofSchools);
+                        i.putExtra("ListOfSchools",list_schools_test);
 //                        i.putExtra("ListOfSchools", (Serializable)ListofSchools);
                                 startActivity(i);
                     } else {
@@ -180,6 +191,8 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
         } else if (id == R.id.saved_test) {
 
         } else if (id == R.id.about_us) {
+            Intent i = new Intent(getApplicationContext(),AboutUs.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_share) {
 

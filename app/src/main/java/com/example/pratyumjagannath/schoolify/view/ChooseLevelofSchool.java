@@ -52,6 +52,7 @@ public class ChooseLevelofSchool extends AppCompatActivity {
                 intent.putExtra("SchoolLevel",radioButton.getText());
                 intent.putExtra("myLatitude",i.getDoubleExtra("myLatitude",0.0));
                 intent.putExtra("myLongitude",i.getDoubleExtra("myLongitude",0.0));
+                intent.putExtra("ListOfSchools",i.getStringExtra("ListOfSchools"));
 //                intent.putExtra("ListOfSchools",(Serializable)ListOfSchools);
                 startActivity(intent);
 

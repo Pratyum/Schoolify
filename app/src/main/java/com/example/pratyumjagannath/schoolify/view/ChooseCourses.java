@@ -1,6 +1,10 @@
 package com.example.pratyumjagannath.schoolify.view;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +36,12 @@ public class ChooseCourses extends AppCompatActivity {
         final boolean isAutonomous = intent.getBooleanExtra("isAutonomous", false);
         final boolean isInegrated = intent.getBooleanExtra("isInegrated", false);
         final boolean isIndependent = intent.getBooleanExtra("isIndependent",false);
-//        final ArrayList<School> ListOfSchools = (ArrayList<School>) intent.getSerializableExtra("ListOfSchools");
+//        String json = intent.getStringExtra("ListOfSchools");
+//        Log.d("BOOBs",json);
+//        Gson gson  = new Gson();
+//        Type School_list = new TypeToken<ArrayList<SecondarySchool>>() {
+//        }.getType();
+//        final ArrayList<SecondarySchool>  ListOfSchools = gson.fromJson(json, School_list);
 //        Log.d("BOOBS",ListOfSchools.size()+" schools recieved");
         Log.d("BOOBS", Level);
         Log.d("BOOBS",isAutonomous+" ");
@@ -78,16 +87,21 @@ public class ChooseCourses extends AppCompatActivity {
             checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(ChoiceOfCourses.contains(checkBox.getText())){
+                    if (ChoiceOfCourses.contains(checkBox.getText())) {
                         ChoiceOfCourses.remove(checkBox.getText());
-                        Log.d("BOOBS",checkBox.getText()+"is removed");
-                    }else {
+                        Log.d("BOOBS", checkBox.getText() + "is removed");
+                    } else {
                         ChoiceOfCourses.add(checkBox.getText().toString());
                         Log.d("BOOBS", checkBox.getText() + "is added");
                     }
                 }
             });
             layout.addView(checkBox);
+//            View view = new View(this);
+//            ViewGroup.LayoutParams params = view.getLayoutParams();
+//            params.height = 1;
+//            view.setLayoutParams(params);
+
         }
 
         FloatingActionButton next_button = (FloatingActionButton) findViewById(R.id.to_step_5);
@@ -112,4 +126,19 @@ public class ChooseCourses extends AppCompatActivity {
 
     }
 
+    class DrawView extends View {
+        Paint paint = new Paint();
+
+        public DrawView(Context context) {
+            super(context);
+            paint.setColor(Color.BLUE);
+        }
+        @Override
+        public void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            canvas.drawLine(10, 20, 30, 40, paint);
+            canvas.drawLine(20, 10, 50, 20, paint);
+
+        }
+    }
 }

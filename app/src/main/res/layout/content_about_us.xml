@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.pratyumjagannath.schoolify.view.AboutUs"
+    tools:showIn="@layout/activity_about_us"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/about_us"
+        android:text="About Schoolify"
+        android:gravity="center"
+        android:textSize="32sp"
+        android:textColor="@android:color/holo_red_light"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/about_App"
+        android:text="Normally we see that students are not able to choose the perfect school that they want- close enough to home but still offers specialized programmes for those subjects that you are interested in. Our application aims to solve just that problem."
+        android:textColor="@android:color/black"
+        android:paddingTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mission_statement"
+        android:text="Mission Statement"
+        android:textColor="@android:color/holo_blue_dark"
+        android:paddingTop="16dp"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mission_statement_content"
+        android:text="To create a more educated world, an important thing is for each student attend the right school. With our application and our AI we will guide students to the most beneficial choice in order to kickstart their future."
+        android:textColor="@android:color/black"
+        android:paddingTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Team"
+        android:text="Created by "
+        android:textColor="@android:color/holo_blue_dark"
+        android:paddingTop="16dp"
+        android:textSize="24sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_content"
+        android:text="The MasterMinds"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="16sp"
+        android:paddingTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_1"
+        android:text="Hui Peng"
+        android:textColor="@android:color/black"
+        android:paddingTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_2"
+        android:text="Kavya Boppanna"
+        android:textColor="@android:color/black"
+        android:paddingTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_3"
+        android:text="Stephanie Leong"
+        android:textColor="@android:color/black"
+        android:paddingTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_4"
+        android:text="Carl Rygart"
+        android:textColor="@android:color/black"
+        android:paddingTop="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/team_member_5"
+        android:text="Pratyum Jagan"
+        android:textColor="@android:color/black"
+        android:paddingTop="8dp"/>
+
+
+
+</LinearLayout>

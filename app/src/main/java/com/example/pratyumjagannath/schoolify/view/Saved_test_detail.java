@@ -24,12 +24,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.pratyumjagannath.schoolify.R;
-import com.example.pratyumjagannath.schoolify.controller.FetchSchoolData;
 import com.example.pratyumjagannath.schoolify.model.School;
-import com.example.pratyumjagannath.schoolify.model.SecondarySchool;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -39,27 +36,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.concurrent.ExecutionException;
 
-public class Results_navigation extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,OnMapReadyCallback{
+public class Saved_test_detail extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,OnMapReadyCallback {
 
     static final int READ_BLOCK_SIZE = 1000;
     private GoogleMap map;
     private ArrayList<School> ListOfSchools;
     private ArrayList<Marker> ListOfMarkers;
     private LatLng myLocation;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results_navigation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -76,55 +70,30 @@ public class Results_navigation extends AppCompatActivity
 
 
         Intent intent = getIntent();
-        String Level = intent.getStringExtra("SchoolLevel");
-        boolean isSpecialPlan = intent.getBooleanExtra("isSpecialPlan", false);
-        boolean isAutonomous = intent.getBooleanExtra("isAutonomous", false);
-        boolean isInegrated = intent.getBooleanExtra("isInegrated", false);
-        boolean isIndependent = intent.getBooleanExtra("isIndependent",false);
-        myLocation = new LatLng(intent.getDoubleExtra("myLatitude",0.0),intent.getDoubleExtra("myLongitude",0.0));
-        Log.d("BOOBS", "" + Level + " is the Level");
-        Log.d("BOOBS",""+isAutonomous+" is Autonomous");
-        Log.d("BOOBS",""+isIndependent+" is Independent");
-        Log.d("BOOBS",""+ isInegrated +" is Integrated");
-        Log.d("BOOBS",""+ isSpecialPlan + " is Special");
-        Log.d("BOOBS",""+ myLocation.latitude+","+myLocation.longitude+" is the location");
-
-        ArrayList<String> ListOfCourses = (ArrayList<String>) intent.getSerializableExtra("ListOfCourses");
-//        FetchResultData results = new FetchResultData();
-
-//        ArrayList<School> ListOfSchool = (ArrayList<School>) intent.getSerializableExtra("ListOfSchools");
-        FetchSchoolData fetchData = new FetchSchoolData();
-        fetchData.execute();
-        ListOfSchools = new ArrayList<>();
+        String filename = intent.getStringExtra("filename");
+        Log.d("BOOBS",filename);
+        String s="";
         try {
-            ListOfSchools = fetchData.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        Log.d("BOOBS","Size of Array is "+ ListOfSchools.size());
+            FileInputStream fileIn = openFileInput(filename+".txt");
+            InputStreamReader InputRead = new InputStreamReader(fileIn);
 
+            char[] inputBuffer = new char[READ_BLOCK_SIZE];
+            int charRead;
 
-
-        Log.d("BOOBS",""+ListOfCourses.size()+" is the number of courses");
-        Log.d("BOOBS", "" + ListOfSchools.size() + " is the number of schools");
-
-        for (int i=0;i<ListOfSchools.size();++i){
-            try {
-                ListOfSchools.get(i).calc_distance_score(myLocation);
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            while ((charRead = InputRead.read(inputBuffer)) > 0) {
+                // char to string conversion
+                String readstring = String.copyValueOf(inputBuffer, 0, charRead);
+                s += readstring;
             }
+            InputRead.close();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
-        for(int i=0;i<ListOfSchools.size();++i){
-            ((SecondarySchool)ListOfSchools.get(i)).calc_program_score(ListOfCourses);
-        }
-
-        Collections.sort(ListOfSchools);
-
+        Gson gson = new Gson();
+        Type School_list = new TypeToken<ArrayList<School>>() {
+        }.getType();
+        Log.d("BOOBS",s);
+        ListOfSchools = gson.fromJson(s, School_list);
         ArrayList<String> names = new ArrayList<>();
         for (int i = 0; i < ListOfSchools.size(); ++i) {
             names.add((i+1)+ ". "+ ListOfSchools.get(i).getSchool_name());
@@ -159,49 +128,6 @@ public class Results_navigation extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String dates="";
-                try {
-                    FileInputStream fileIn=openFileInput("date.txt");
-                    InputStreamReader InputRead= new InputStreamReader(fileIn);
-
-                    char[] inputBuffer= new char[READ_BLOCK_SIZE];
-                    int charRead;
-
-                    while ((charRead=InputRead.read(inputBuffer))>0) {
-                        // char to string conversion
-                        String readstring=String.copyValueOf(inputBuffer,0,charRead);
-                        dates +=readstring;
-                    }
-                    InputRead.close();
-                    Toast.makeText(getBaseContext(), dates,Toast.LENGTH_SHORT).show();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                try {
-                    String today = String.format(" %02d-%02d-%04d_%02d-%02d",Calendar.getInstance().get(Calendar.DAY_OF_MONTH),Calendar.getInstance().get(Calendar.MONTH)+1,Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE));
-                    Log.d("BOOBs", today);
-                    dates+=(" "+ today);
-                    Log.d("BOOBs", dates);
-                    FileOutputStream fileout1=openFileOutput("date.txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter=new OutputStreamWriter(fileout1);
-                    outputWriter.write(dates);
-                    outputWriter.close();
-
-                    String json = new Gson().toJson(ListOfSchools);
-                    Log.d("BOOBs",json);
-                    FileOutputStream fileout = openFileOutput(today + ".txt", MODE_PRIVATE);
-                    OutputStreamWriter outputWriter1=new OutputStreamWriter(fileout);
-                    outputWriter1.write(json);
-                    outputWriter1.close();
-                    //display file saved message
-                    Toast.makeText(getBaseContext(), "Files saved successfully!+ Json also saved!",
-                            Toast.LENGTH_SHORT).show();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
                 Snackbar.make(view, "Content Saved ! Thanks for using Schoolify!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -251,10 +177,10 @@ public class Results_navigation extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.new_test) {
-            Intent i = new Intent(getApplication(),NewTestActivity.class);
+            Intent i = new Intent(getApplicationContext(),NewTestActivity.class);
             startActivity(i);
         } else if (id == R.id.saved_test) {
-            Intent i = new Intent(getApplication(),SavedTest.class);
+            Intent i = new Intent(getApplicationContext(),SavedTest.class);
             startActivity(i);
         } else if (id == R.id.about_us) {
 

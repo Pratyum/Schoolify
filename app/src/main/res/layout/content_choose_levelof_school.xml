@@ -29,35 +29,51 @@
 
 
     <RadioGroup
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="6"
         android:id="@+id/level_of_school">
         <RadioButton
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/primary_school"
             android:text="Primary School"
             android:buttonTint="@color/colorPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
         <RadioButton
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/secondary_school"
             android:text="Secondary School"
             android:buttonTint="@color/colorPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
         <RadioButton
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/junior_college"
             android:text="Junior College"
             android:buttonTint="@color/colorPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
         <RadioButton
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/university"
             android:text="University"
             android:buttonTint="@color/colorPrimary"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
     </RadioGroup>
     <!--<Button-->
         <!--android:layout_width="match_parent"-->

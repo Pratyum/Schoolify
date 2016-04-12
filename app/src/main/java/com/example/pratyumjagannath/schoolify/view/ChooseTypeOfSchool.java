@@ -48,8 +48,7 @@ public class ChooseTypeOfSchool extends AppCompatActivity {
                 intent.putExtra("SchoolLevel", i.getSerializableExtra("SchoolLevel"));
                 intent.putExtra("myLatitude",i.getDoubleExtra("myLatitude", 0.0));
                 intent.putExtra("myLongitude",i.getDoubleExtra("myLongitude",0.0));
-
-//                intent.putExtra("ListOfSchools",(Serializable)ListOfSchools);
+                intent.putExtra("ListOfSchools",i.getStringExtra("ListOfSchools"));
 
                 if(chkSpecialPlan!=null) {
                     result.append("Special Plan check : ").append(chkSpecialPlan.isChecked() + "\n");

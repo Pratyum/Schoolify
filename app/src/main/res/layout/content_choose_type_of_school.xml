@@ -38,25 +38,40 @@
         android:id="@+id/autonomous_school"
         android:text="Autonomous School"
         android:buttonTint="@color/colorPrimary"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/integrated_school"
         android:text="Integrated School"
         android:buttonTint="@color/colorPrimary"/>
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/independent_school"
         android:text="Independent School"
         android:buttonTint="@color/colorPrimary"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
     <CheckBox
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/special_assistance_plan_school"
         android:text="Special assistance plan School"
         android:buttonTint="@color/colorPrimary"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
 </LinearLayout>
     <!--<Button-->
         <!--android:layout_width="match_parent"-->
