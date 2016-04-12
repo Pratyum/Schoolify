@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_arrow_right_white" />
+        android:src="@drawable/ic_arrow_right_bold" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/back_to_step_3"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_arrow_left_white"
+        android:src="@drawable/ic_arrow_left_bold"
         app:layout_anchorGravity="top" />
 
 </android.support.design.widget.CoordinatorLayout>

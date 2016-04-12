@@ -70,30 +70,33 @@ public class Saved_test_detail extends AppCompatActivity implements NavigationVi
 
 
         Intent intent = getIntent();
-        String filename = intent.getStringExtra("filename");
-        Log.d("BOOBS",filename);
-        String s="";
-        try {
-            FileInputStream fileIn = openFileInput(filename+".txt");
-            InputStreamReader InputRead = new InputStreamReader(fileIn);
-
-            char[] inputBuffer = new char[READ_BLOCK_SIZE];
-            int charRead;
-
-            while ((charRead = InputRead.read(inputBuffer)) > 0) {
-                // char to string conversion
-                String readstring = String.copyValueOf(inputBuffer, 0, charRead);
-                s += readstring;
-            }
-            InputRead.close();
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
+//         String filename = intent.getStringExtra("filename");
+//        Log.d("BOOBS",filename);
+//        String s="";
+//        try {
+//            FileInputStream fileIn = openFileInput(filename+".txt");
+//            InputStreamReader InputRead = new InputStreamReader(fileIn);
+//
+//            char[] inputBuffer = new char[READ_BLOCK_SIZE];
+//            int charRead;
+//
+//            while ((charRead = InputRead.read(inputBuffer)) > 0) {
+//                // char to string conversion
+//                String readstring = String.copyValueOf(inputBuffer, 0, charRead);
+//                s += readstring;
+//            }
+//            InputRead.close();
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
         Gson gson = new Gson();
         Type School_list = new TypeToken<ArrayList<School>>() {
         }.getType();
-        Log.d("BOOBS",s);
-        ListOfSchools = gson.fromJson(s, School_list);
+        Log.d("BOOBS",intent.getStringExtra("json"));
+        Log.d("BOOBS",intent.getDoubleExtra("MyLat",0)+"");
+        Log.d("BOOBS",intent.getDoubleExtra("MyLng",0)+"");
+        myLocation = new LatLng(intent.getDoubleExtra("MyLat",0),intent.getDoubleExtra("MyLng",0));
+        ListOfSchools = gson.fromJson(intent.getStringExtra("json"), School_list);
         ArrayList<String> names = new ArrayList<>();
         for (int i = 0; i < ListOfSchools.size(); ++i) {
             names.add((i+1)+ ". "+ ListOfSchools.get(i).getSchool_name());

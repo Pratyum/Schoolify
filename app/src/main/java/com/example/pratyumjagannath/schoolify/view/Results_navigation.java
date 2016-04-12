@@ -255,11 +255,24 @@ public class Results_navigation extends AppCompatActivity
             startActivity(i);
         } else if (id == R.id.saved_test) {
             Intent i = new Intent(getApplication(),SavedTest.class);
+            Gson gson  = new Gson();
+            String json = gson.toJson(ListOfSchools);
+            i.putExtra("List",json);
+            i.putExtra("MyLat",myLocation.latitude);
+            i.putExtra("MyLng",myLocation.longitude);
             startActivity(i);
         } else if (id == R.id.about_us) {
-
+            Intent i = new Intent(getApplicationContext(),AboutUs.class);
+            startActivity(i);
         } else if (id == R.id.nav_share) {
-
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "Have you tried schooliy! You Should!");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+        }else if (id == R.id.main_menu) {
+            Intent i = new Intent(getApplicationContext(),Schoolify.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
