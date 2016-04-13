@@ -36,7 +36,7 @@ public class FetchSchoolData extends AsyncTask<Void, Void, ArrayList<School>>{
             final String KEY_PARAM = "resource_id";
             final String KEY_VALUE = "de6fbf16-9e05-495d-9371-8b706bba5be2";
             final String LIMIT_PARAM = "limit";
-            final String LIMIT_VALUE = "20";
+            final String LIMIT_VALUE = "60";
 
             Uri builtUri = Uri.parse(BASE_ADDR).buildUpon()
                     .appendQueryParameter(KEY_PARAM, KEY_VALUE)

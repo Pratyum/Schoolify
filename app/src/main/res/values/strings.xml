@@ -10,15 +10,15 @@
     <string name="title_activity_main_menu">Schoolify</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="title_activity_new_test">NewTestActivity</string>
-    <string name="title_activity_choose_level">ChooseLevel</string>
+    <string name="title_activity_new_test">Choose your Location</string>
+    <string name="title_activity_choose_level">What is your level of Schooling</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_choose_type_of_school">ChooseTypeOfSchool</string>
-    <string name="title_activity_choose_courses">ChooseCourses</string>
+    <string name="title_activity_choose_type_of_school">Choose Type Of School</string>
+    <string name="title_activity_choose_courses">Choose Interested Programmes</string>
     <string name="title_activity_results">Results</string>
-    <string name="title_activity_results_navigation">Results_navigation</string>
-    <string name="title_activity_about_us">AboutUs</string>
-    <string name="title_activity_saved_test">SavedTest</string>
-    <string name="title_activity_saved_test_detail">Saved_test_detail</string>
+    <string name="title_activity_results_navigation"> Results</string>
+    <string name="title_activity_about_us">About Us</string>
+    <string name="title_activity_saved_test">Saved Test</string>
+    <string name="title_activity_saved_test_detail"> Saved Test Details</string>
 </resources>

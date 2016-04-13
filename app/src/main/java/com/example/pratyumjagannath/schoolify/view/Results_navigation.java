@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,12 +17,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -173,7 +176,6 @@ public class Results_navigation extends AppCompatActivity
                         dates +=readstring;
                     }
                     InputRead.close();
-                    Toast.makeText(getBaseContext(), dates,Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -196,8 +198,8 @@ public class Results_navigation extends AppCompatActivity
                     outputWriter1.write(json);
                     outputWriter1.close();
                     //display file saved message
-                    Toast.makeText(getBaseContext(), "Files saved successfully!+ Json also saved!",
-                            Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getBaseContext(), "Files saved successfully!+ Json also saved!",
+//                            Toast.LENGTH_SHORT).show();
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -282,6 +284,35 @@ public class Results_navigation extends AppCompatActivity
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        googleMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+            @Override
+            public View getInfoWindow(Marker arg0) {
+                return null;
+            }
+
+            @Override
+            public View getInfoContents(Marker marker) {
+
+                LinearLayout info = new LinearLayout(getApplicationContext());
+                info.setOrientation(LinearLayout.VERTICAL);
+
+                TextView title = new TextView(getBaseContext());
+                title.setTextColor(Color.BLACK);
+                title.setGravity(Gravity.CENTER);
+                title.setTypeface(null, Typeface.BOLD);
+                title.setText(marker.getTitle());
+
+                TextView snippet = new TextView(getApplicationContext());
+                snippet.setTextColor(Color.GRAY);
+                snippet.setText(marker.getSnippet());
+
+                info.addView(title);
+                info.addView(snippet);
+
+                return info;
+            }
+        });
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
@@ -307,9 +338,9 @@ public class Results_navigation extends AppCompatActivity
                             schoolLocation.setLongitude(ListOfSchools.get(i).getSchool_location().longitude);
                             MarkerOptions result_marker01 = new MarkerOptions()
                                     .position(ListOfSchools.get(i).getSchool_location())
-                                    .title((i+1)+". "+ListOfSchools.get(i).getSchool_name())
+                                    .title((i + 1) + ". " + ListOfSchools.get(i).getSchool_name())
                                     .alpha(alpha)
-                                    .snippet("Distance from your Location: "+ (location.distanceTo(schoolLocation)/1000)+"km");
+                                    .snippet("Distance from your Location: " + (location.distanceTo(schoolLocation) / 1000) + "km" + "\n" + "Distinguished Programmes: " + ((SecondarySchool) ListOfSchools.get(i)).printDistProg());
                             ListOfMarkers.add(googleMap.addMarker(result_marker01));
                             Log.d("BOOBS", i + "." + ListOfSchools.get(i).getSchool_location().latitude + "," + ListOfSchools.get(i).getSchool_location().longitude + "Added!");
                             alpha -= 0.02;
@@ -342,4 +373,6 @@ public class Results_navigation extends AppCompatActivity
         });
 
     }
+
+
 }

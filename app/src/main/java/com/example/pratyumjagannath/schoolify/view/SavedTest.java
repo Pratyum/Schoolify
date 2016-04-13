@@ -41,9 +41,11 @@ public class SavedTest extends AppCompatActivity {
         }.getType();
         final Intent intent = getIntent();
         final String json = intent.getStringExtra("List");
-        ListofSchools = gson.fromJson(json, School_list);
-        Log.d("BOOBS", json);
-        Log.d("BOOBS", ListofSchools.size()+" ");
+        if(json!=null) {
+            ListofSchools = gson.fromJson(json, School_list);
+            Log.d("BOOBS", json);
+            Log.d("BOOBS", ListofSchools.size() + " ");
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +69,7 @@ public class SavedTest extends AppCompatActivity {
             }
             InputRead.close();
             final String[] list = s.split(" ");
+
           ArrayAdapter<String> rest_list_adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list) {
                 @Override
                 public View getView(int position, View convertView,
@@ -86,15 +89,17 @@ public class SavedTest extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Log.d("BOOBS", list[position]);
-                    Intent i = new Intent(getBaseContext(),Saved_test_detail.class);
-                    i.putExtra("json",json);
-                    i.putExtra("MyLat",intent.getDoubleExtra("MyLat",0));
-                    i.putExtra("MyLng",intent.getDoubleExtra("MyLng",0));
+                    Intent i = new Intent(getBaseContext(), Saved_test_detail.class);
+                    if(json!=null) {
+                        i.putExtra("json", json);
+                        i.putExtra("MyLat", intent.getDoubleExtra("MyLat", 0));
+                        i.putExtra("MyLng", intent.getDoubleExtra("MyLng", 0));
+                    }
                     startActivity(i);
                 }
             });
 
-            Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getBaseContext(), s, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {
             e.printStackTrace();

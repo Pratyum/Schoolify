@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -43,8 +45,8 @@ public class ChooseLevelofSchool extends AppCompatActivity {
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 // find the radiobutton by returned id
                 radioButton = (RadioButton) findViewById(selectedId);
-                Toast.makeText(getBaseContext(),
-                        radioButton.getText(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getBaseContext(),
+//                        radioButton.getText(), Toast.LENGTH_SHORT).show();
                 Intent i = getIntent();
 //                ArrayList<School> ListOfSchools = (ArrayList<School>) i.getSerializableExtra("ListOfSchools");
 //                Log.d("BOOBS", ListOfSchools.size() + " is the size in Choose Level");
@@ -60,6 +62,30 @@ public class ChooseLevelofSchool extends AppCompatActivity {
 
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_others, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_home) {
+            Intent i= new Intent(this,Schoolify.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

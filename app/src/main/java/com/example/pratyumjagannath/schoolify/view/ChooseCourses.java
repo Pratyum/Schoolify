@@ -10,6 +10,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -126,19 +128,28 @@ public class ChooseCourses extends AppCompatActivity {
 
     }
 
-    class DrawView extends View {
-        Paint paint = new Paint();
-
-        public DrawView(Context context) {
-            super(context);
-            paint.setColor(Color.BLUE);
-        }
-        @Override
-        public void onDraw(Canvas canvas) {
-            super.onDraw(canvas);
-            canvas.drawLine(10, 20, 30, 40, paint);
-            canvas.drawLine(20, 10, 50, 20, paint);
-
-        }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_others, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_home) {
+            Intent i= new Intent(this,Schoolify.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

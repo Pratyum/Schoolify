@@ -40,6 +40,15 @@ public class SecondarySchool extends School {
         return distinctionProg;
     }
 
+    public String printDistProg(){
+        String result = "";
+        for (String program: distinctionProg) {
+            result += program + ", ";
+        }
+        result = result.substring(0, result.length()-2);
+        return result;
+    }
+
     public void setIsAutonomous(boolean isAutonomous) {
         this.isAutonomous = isAutonomous;
     }

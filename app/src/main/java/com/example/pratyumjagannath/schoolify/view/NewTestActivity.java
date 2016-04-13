@@ -13,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -102,6 +103,30 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_others, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_home) {
+            Intent i= new Intent(this,Schoolify.class);
+            startActivity(i);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void onMapReady(final GoogleMap googleMap) {
@@ -131,8 +156,8 @@ public class NewTestActivity extends AppCompatActivity implements OnMapReadyCall
                 @Override
                 public void onClick(View v) {
                     if (getMyLocation() != null) {
-                        Toast.makeText(getBaseContext(), "Location changed: Lat: " + getMyLocation().latitude + " Lng: "
-                                + getMyLocation().longitude, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getBaseContext(), "Location changed: Lat: " + getMyLocation().latitude + " Lng: "
+//                                + getMyLocation().longitude, Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), ChooseLevelofSchool.class);
                         i.putExtra("myLatitude", getMyLocation().latitude);
                         i.putExtra("myLongitude", getMyLocation().longitude);
