@@ -1,7 +1,7 @@
 # Schoolify
 *-Developed as a Software Engineering Project* 
 
-![Schoolify](https://pratyumjagan.com/assets/images/projects/schoolify.png)  
+![Schoolify](https://github.com/Pratyum/Schoolify/screenshots/schoolify.png)  
 
 A native android application that originated from the thoughts of group of students. This has taken its roots from the intention of building a smart nation that exploit government data (data.gov.sg) where the data has to be used innovatively.
 
@@ -16,13 +16,10 @@ Steps to run application :
 - Install and enjoy.
 
 # Screenshots
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/1.png)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/2.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/3.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/4.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/5.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/6.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/7.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/8.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/9.jpeg)&nbsp;
-![Crumbs](https://github.com/ShantanuKamath/Crumbs/blob/master/Images/10.jpeg)  
+![Crumbs](https://github.com/Pratyum/Schoolify/screenshots/1.jpg)&nbsp;
+![Crumbs](https://github.com/Pratyum/Schoolify/screenshots/2.jpg)&nbsp;
+![Crumbs](https://github.com/Pratyum/Schoolify/screenshots/3.jpg)&nbsp;
+![Crumbs](https://github.com/Pratyum/Schoolify/screenshots/4.jpg)&nbsp;
+![Crumbs](https://github.com/Pratyum/Schoolify/screenshots/5.jpg)&nbsp;
+![Crumbs](https://github.com/Pratyum/Schoolify/screenshots/6.jpg)&nbsp;
+
