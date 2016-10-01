@@ -1,7 +1,7 @@
 # Schoolify
 *-Developed as a Software Engineering Project* 
 
-![Crumbs](https://pratyumjagan.com/assets/images/projects/schoolify.jpg)  
+![Schoolify](https://www.pratyumjagan.com/assets/images/projects/schoolify.jpg)  
 
 A native android application that originated from the thoughts of group of students. This has taken its roots from the intention of building a smart nation that exploit government data (data.gov.sg) where the data has to be used innovatively.
 
