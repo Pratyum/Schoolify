@@ -8,7 +8,7 @@ A native android application that originated from the thoughts of group of stude
 APIs Integrated :
 - Data.gov API to get the data of all the schools
 - Simple questionairre to determine the skillset
-- Google Maps API to enable location and UI
+- Google Maps API to enable location and UI.
 
 Steps to run application :
 - Download Schoolify.apk file.
